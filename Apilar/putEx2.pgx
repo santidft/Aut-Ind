@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="putEx2" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="sX" type="string" xsi:type="element" />
+      <Parameter name="nY" type="num" xsi:type="element" />
+      <Parameter name="sText" type="string" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="nX" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // Displays a text at [left/center/right] horizontal position 
+  //
+  // The cursor is positioned on the character after the last character of
+  // the message displayed
+  //
+  // copyright (c) 2020 victortorreslopez
+  //
+  // GNU General Public License
+  //
+  // Parameters
+  // - sX: horizontal alignment (left, center, right)
+  // - nY: cursor row (0 to 13)
+  // - sText: character string type expression
+  //
+  // Locals variables
+  // - nX: cursor column (0 to 39)
+  //
+  // Version history
+  // ---------------
+  // 0.0, 2020/11/21, VTL: alfa release from "_put"
+  
+  call lower(sX)
+  
+  if len(sText) > 40
+    nX = 0
+  else
+    if sX == "right" 
+      nX = 40 - len(sText)
+    elseIf sX == "center"
+      nX = (40 - len(sText)) / 2
+    elseIf sX == "left"
+      nX = 0
+    endIf
+  endIf
+  
+  gotoxy(nX, nY)
+  put(sText)
+end
+]]></Code>
+  </Program>
+</Programs>

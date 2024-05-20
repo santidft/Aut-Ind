@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="robot">
+    <Code><![CDATA[begin
+  // Controla los movimientos del brazo
+
+  // Se desplaza a la posicion de reposo
+  movej(pInicio,tEyector,mNomSpeed)
+  waitEndMove()
+
+  // Bucle principal de la tarea
+  while !bTermina
+    if bTraslada
+      // Traslada las piezas desde la entrada a la salida
+      bHaciaSalida=true
+      for nPiezaActual=0 to nTotalPiezas-1
+        // Calcula la posicion de la proxima pieza a coger
+        pOrigen=appro(pEntrada,{0,0,-(nTotalPiezas-1-nPiezaActual)*nPiezaAltura,0,0,0})
+        // Calcula la posicion de la proxima pieza a colocar
+        pDestino=appro(pSalida,{0,0,-nPiezaActual*nPiezaAltura,0,0,0})
+
+        // Se coge una pieza
+        call robotGet(pOrigen,trAprox,tEyector,mNomSpeed,mVelAprox)
+        // Se coloca una pieza
+        call robotPut(pDestino,trAprox,tEyector,mNomSpeed,mVelAprox)
+
+        // Se actualiza el contador de maniobras 
+        nTrasladadas=nTrasladadas+1
+      endFor
+
+      // Se regresa a la posicion de reposo
+      movej(pEspera,tEyector,mNomSpeed)
+      waitEndMove()
+      delay(nEspera)
+
+      // Traslada las piezas desde la salida a la entrada
+      bHaciaSalida=false
+      for nPiezaActual=0 to nTotalPiezas-1
+        // Calcula la posicion de la proxima pieza a coger
+        pOrigen=appro(pSalida,{0,0,-(nTotalPiezas-1-nPiezaActual)*nPiezaAltura,0,0,0})
+        // Calcula la posicion de la proxima pieza a colocar
+        pDestino=appro(pEntrada,{0,0,-nPiezaActual*nPiezaAltura,0,0,0})
+
+        // Se coge una pieza
+        call robotGet(pOrigen,trAprox,tEyector,mNomSpeed,mVelAprox)
+        // Se coloca una pieza
+        call robotPut(pDestino,trAprox,tEyector,mNomSpeed,mVelAprox)
+
+        // Se actualiza el contador de maniobras 
+        nTrasladadas=nTrasladadas+1
+      endFor
+
+      // Se regresa a la posicion de reposo
+      movej(pEspera,tEyector,mNomSpeed)
+      waitEndMove()
+      delay(nEspera)
+    endIf
+
+    // Se situa sobre la pila de entrada
+    movej(pInicio,tEyector,mNomSpeed)
+    waitEndMove()
+
+    // Se da paso a la siguiente tarea
+    delay(0)
+  endWhile
+  bTermina=false
+
+  // Se regresa a la posicion de referencia
+  movej(jHome,tEyector,mNomSpeed)
+  waitEndMove()
+
+  // Se informa de la finalizacion de la tarea
+  bFin=true
+end]]></Code>
+  </Program>
+</Programs>

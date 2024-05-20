@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Data/2">
+  <Datas>
+    <Data name="bTraslada" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="bFin" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="bPiezaPreparada" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="bTermina" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="jHome" access="private" xsi:type="array" type="jointRx" size="1" />
+    <Data name="mNomSpeed" access="public" xsi:type="array" type="mdesc" size="1">
+      <Value key="0" leave="25" reach="25" />
+    </Data>
+    <Data name="mVelAprox" access="private" xsi:type="array" type="mdesc" size="1">
+      <Value key="0" accel="25" vel="50" decel="25" blend="off" />
+    </Data>
+    <Data name="nPendientes" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="nSolicitadas" access="private" xsi:type="array" type="num" size="1">
+      <Value key="0" value="2" />
+    </Data>
+    <Data name="pEntrada" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" x="-415" y="250" z="-265" ry="-180" shoulder="lefty" elbow="epositive" wrist="wpositive" fatherId="world[0]" />
+    </Data>
+    <Data name="pEspera" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" x="-415" y="250" z="-215" rx="-180" ry="-7.016709E-15" rz="-180" shoulder="lefty" elbow="epositive" wrist="wpositive" fatherId="world[0]" />
+    </Data>
+    <Data name="pSalida" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" x="-415" z="-210" ry="-180" fatherId="world[0]" />
+    </Data>
+    <Data name="sMensaje" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="tEyector" access="private" xsi:type="array" type="tool" size="1">
+      <Value key="0" z="22" fatherId="flange[0]" ioLink="valve1" ioOpen="1" ioClose="1" />
+    </Data>
+    <Data name="trAprox" access="private" xsi:type="array" type="trsf" size="1">
+      <Value key="0" z="-50" />
+    </Data>
+  </Datas>
+</Database>

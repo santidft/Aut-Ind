@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="Piramide">
+    <Locals>
+      <Local name="j" type="num" xsi:type="array" size="1" />
+      <Local name="k" type="num" xsi:type="array" size="1" />
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="l" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //Mueve el brazo para crear una pirámide en 3D.
+  
+  // Se desplaza a la posicion de espera
+  pEspera=appro(pPieza,{0,0,50,0,0,0})
+  movej(pEspera,tEyector,mNomSpeed)
+  waitEndMove()
+  
+  //Ciclo
+  while !bTermina
+    if bStartPiramide 
+      for i = 0 to nPlantas
+        for j = 0 to nPlantas - nNivel
+          for k = 0 to nPlantas - nNivel - nFila
+            // Se espera la orden de pieza preparada para continuar
+            sMensaje="pulse 'enter' para continuar"
+            wait(bPiezaPreparada)
+            bPiezaPreparada=false
+            sMensaje=""
+            
+            pObjetivo = appro(pCentro,{(nLPieza/2)*(nPlantas-nNivel-nFila-1)+nX,nY,nZ,0,0,0})
+            call pick(pPieza,tVentosa,mNomSpeed,mVelApprox)
+            call place(pObjetivo,tVentosa,mNomSpeed,mVelApprox)
+            nX=nX+nLPieza
+          endFor
+          nX=0
+          nCont=nCont+1
+          nY=nY+nWPieza*nCont
+          nFila=nFila+1
+          for l = 0 to nPlantas - nNivel - nFila
+            // Se espera la orden de pieza preparada para continuar
+            sMensaje="pulse 'enter' para continuar"
+            wait(bPiezaPreparada)
+            bPiezaPreparada=false
+            sMensaje=""
+            
+            pObjetivo = appro(pCentro,{(nLPieza/2)*(nPlantas-nNivel-nFila-1)+nX,nY,nZ,0,0,0})
+            call pick(pPieza,tVentosa,mNomSpeed,mVelApprox)
+            call place(pObjetivo,tVentosa,mNomSpeed,mVelApprox)
+            nX=nX+nLPieza
+          endFor
+          nX=0
+          nCont=nCont+1
+          nY=nY-nWPieza*nCont
+        endFor
+        nY=0
+        nZ=nZ+12
+      endFor
+      bStartPiramide=false
+    endIf
+    delay(0)
+  endWhile
+  bTermina=false
+  
+  movej(jHome,tVentosa,mNomSpeed)
+  waitEndMove()
+  
+  bFin=true
+  
+end]]></Code>
+  </Program>
+</Programs>

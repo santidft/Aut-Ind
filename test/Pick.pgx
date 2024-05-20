@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="pick" access="private" >
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1" >
+      <Parameter name="pPosition" type="point" use="value" xsi:type="element" dimensions="1" />
+      <Parameter name="tTool" type="tool" use="value" xsi:type="element" dimensions="1" />
+      <Parameter name="mApproach" type="mdesc" use="value" xsi:type="element" dimensions="1" />
+      <Parameter name="mTarget" type="mdesc" use="value" xsi:type="element" dimensions="1" />
+    </Parameters>
+    <Locals>
+      <Local name="pOffset" type="point" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+
+  pOffset=appro(pPosition,{0,0,-50,0,0,0})
+  movej(pOffset,tTool,mApproach)
+  movel(pPosition,tTool,mTarget)
+  close(tTool)
+  movel(pOffset,tTool,mTarget)
+
+end]]></Code>
+  </Program>
+</Programs>

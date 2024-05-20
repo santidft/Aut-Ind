@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Data/2">
+  <Datas>
+    <Data name="bTraslada" access="private" xsi:type="array" type="bool" size="1">
+      <Value key="0" value="true" />
+    </Data>
+    <Data name="bFin" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="bPiezaPreparada" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="bTermina" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="fTrabajo" access="private" xsi:type="array" type="frame" size="1">
+      <Value key="0" x="-400" y="175" z="-274.326706" fatherId="world[0]" />
+    </Data>
+    <Data name="jHome" access="private" xsi:type="array" type="jointRx" size="1" />
+    <Data name="mNomSpeed" access="public" xsi:type="array" type="mdesc" size="1">
+      <Value key="0" leave="25" reach="25" />
+    </Data>
+    <Data name="mVelAprox" access="private" xsi:type="array" type="mdesc" size="1">
+      <Value key="0" accel="25" vel="50" decel="25" blend="off" />
+    </Data>
+    <Data name="nPiezaActual" access="private" xsi:type="array" type="num" size="1">
+      <Value key="0" value="1" />
+    </Data>
+    <Data name="nTrasladadas" access="private" xsi:type="array" type="num" size="1">
+      <Value key="0" value="7" />
+    </Data>
+    <Data name="nPiezaAltura" access="private" xsi:type="array" type="num" size="1">
+      <Value key="0" value="12" />
+    </Data>
+    <Data name="nSeparacion" access="private" xsi:type="array" type="num" size="1">
+      <Value key="0" value="100" />
+    </Data>
+    <Data name="nTotalPiezas" access="private" xsi:type="array" type="num" size="1">
+      <Value key="0" value="2" />
+    </Data>
+    <Data name="p0" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" ry="180" fatherId="fTrabajo[0]" />
+    </Data>
+    <Data name="pCentro" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" x="-400" y="175" z="-272" ry="180" shoulder="righty" elbow="enegative" wrist="wnegative" fatherId="world[0]" />
+    </Data>
+    <Data name="pDestino" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" x="-2.694223E-15" y="50" z="22" rx="-180" ry="7.016709E-15" rz="-180" fatherId="fTrabajo[0]" />
+    </Data>
+    <Data name="pEntrada" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" y="-50" z="103" rx="-180" rz="-180" fatherId="fTrabajo[0]" />
+    </Data>
+    <Data name="pOrigen" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" x="-1.347111E-15" y="-50" z="11" rx="-180" ry="7.016709E-15" rz="-180" fatherId="fTrabajo[0]" />
+    </Data>
+    <Data name="pEspera" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" x="-6.123234E-15" z="50" rx="-180" ry="7.016709E-15" rz="-180" fatherId="fTrabajo[0]" />
+    </Data>
+    <Data name="pSalida" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" x="-1.347111E-15" y="50" z="11" rx="-180" ry="7.016709E-15" rz="-180" fatherId="fTrabajo[0]" />
+    </Data>
+    <Data name="tEyector" access="private" xsi:type="array" type="tool" size="1">
+      <Value key="0" z="22" fatherId="flange[0]" ioLink="valve1" ioOpen="1" ioClose="1" />
+    </Data>
+    <Data name="trAprox" access="private" xsi:type="array" type="trsf" size="1">
+      <Value key="0" z="-50" />
+    </Data>
+    <Data name="nEspera" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="nOffset" access="private" xsi:type="array" type="num" size="1" />
+    <Data name="bHaciaSalida" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="pInicio" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" fatherId="world[0]" />
+    </Data>
+  </Datas>
+</Database>

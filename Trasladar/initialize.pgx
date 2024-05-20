@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="initialize">
+    <Code><![CDATA[begin
+  // inicializa las variables globales
+  //
+  // copyright (c) 2018-2020 victortorreslopez
+  //
+  // GNU General Public License
+  //
+  // historial de modificaciones
+  // - 0.1, 2020/11/20-18:30, VTL: actualizacion
+  // - 0.0, 2018/10/14-11:01, VTL: creacion
+  //
+  // variables binarias
+  bContinua=false
+  bFin=false
+  bSalir=false
+  bTraslada=false
+  
+  // variables numericas
+  nCV=0
+  
+  // cadenas de caracteres
+  sMensaje=""
+end
+
+      ]]></Code>
+  </Program>
+</Programs>

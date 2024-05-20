@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="inicializar">
+    <Code><![CDATA[begin
+  // Pone en marcha la aplicacion
+
+  // Se establece el valor inicial de variables globales
+  // BOOL
+  bFin=false
+  bHaciaSalida=true
+  bPiezaPreparada=false
+  bTermina=false
+  bTraslada=false
+
+  // FRAME
+  // Se determina el centro de coordenadas de fTrabajo a partir de la posicion 
+  // central de referencia de todo el espacio de trabajo (pCentro)
+  fTrabajo.trsf.x=pCentro.trsf.x
+  fTrabajo.trsf.y=pCentro.trsf.y
+  fTrabajo.trsf.z=pCentro.trsf.z
+
+  // NUM
+  nOffset=5
+  nPiezaActual=0
+  nPiezaAltura=12
+  nSeparacion=100
+  nTotalPiezas=1
+  nTrasladadas=0
+end]]></Code>
+  </Program>
+</Programs>

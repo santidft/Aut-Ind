@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s7.10" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="_GLOBAL.pgx" />
+    <Program file="_INFO.pgx" />
+    <Program file="ajustar.pgx" />
+    <Program file="getNum.pgx" />
+    <Program file="inicializar.pgx" />
+    <Program file="lower.pgx" />
+    <Program file="mcp.pgx" />
+    <Program file="putButton.pgx" />
+    <Program file="putEx.pgx" />
+    <Program file="putEx2.pgx" />
+    <Program file="robot.pgx" />
+    <Program file="robotGet.pgx" />
+    <Program file="robotPut.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="Apilar.dtx" />
+  </Database>
+  <Libraries />
+</Project>

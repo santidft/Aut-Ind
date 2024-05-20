@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="mcp">
+    <Locals>
+      <Local name="nTecla" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // Controla la pantalla del mando manual (MCP)
+  //
+  // Variables locales
+  // - nTecla: codigo de la tecla pulsada
+
+  // Se establece el titulo de la aplicacion 
+  title("APILAR")
+
+  // Se establece la pagina de usuario en la pantalla
+  userPage()
+
+  // Bucle principal de la tarea
+  while !bFin
+    // Se borra la pantalla
+    cls()
+
+    // Se muestra informacion en la pantalla
+    call putEx(2,2,"Total       = "+toString("4",nTotalPiezas))
+    call putEx(2,3,"Maniobras   = "+toString("4",nTrasladadas))
+    call putEx(2,4,"Tpo. Espera = "+toString("4",nEspera))
+
+    if bHaciaSalida
+      call putEx2("center",8,"Entrada = "+toString("0",nTotalPiezas-nPiezaActual)+" -> "+toString("0",nPiezaActual)+" = Salida")
+    else
+      call putEx2("center",8,"Entrada = "+toString("0",nPiezaActual)+" <- "+toString("0",nTotalPiezas-nPiezaActual)+" = Salida")
+    endIf
+   
+    // Se muestran las etiquetas de las teclas de funcion
+    if bTraslada
+      call putButton(1,"Para")
+    else
+      call putButton(3,"Total")
+      call putButton(1,"Traslada")
+    endIf
+    call putButton(4,"Espera")  
+    call putButton(6,"Reset")
+    call putButton(8,"Salir")
+
+    // Se procesa la tecla pulsada
+    nTecla=getKey()
+    switch nTecla
+      // Enter - Orden de continuar
+      case 270
+        bPiezaPreparada=true
+      break
+      // F1 - Conmuta el modo "Trasladar"
+      case 271
+        bTraslada=!bTraslada
+      break
+      // F3 - Orden de editar el numero de piezas a trasladar
+      case 273
+        // Se ignora mientras se trasladan piezas
+        if !bTraslada
+          call getNum(19,2,"4",nTotalPiezas)
+          call ajustar()
+        endIf
+      break
+      // F4 - Ajusta el tiempo de espera entre traslados
+      case 274
+        call getNum(19,4,"4",nEspera)
+      break
+      // F6 - Orden de reinicar el contador de maniobras
+      case 276
+        nTrasladadas=0
+      break
+      // F8 - Orden de salir de la aplicacion
+      case 278
+        bTermina=true
+      break
+    endSwitch
+
+    // Se da paso a la siguiente tarea y se estabiliza la pantalla
+    delay(0.1)
+  endWhile
+  bFin=false
+
+  // Se muestra un mensaje de despedida 
+  cls()
+  call putEx2("center",7,"That's all folks")
+end]]></Code>
+  </Program>
+</Programs>

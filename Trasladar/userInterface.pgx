@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="userInterface">
+    <Locals>
+      <Local name="nTecla" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // Controla la pantalla del mando manual (MCP)
+  //
+  // copyright (c) 2018-2020 victortorreslopez
+  //
+  // GNU General Public License
+  //
+  // Variables locales
+  // - nTecla: codigo de la tecla pulsada
+  //
+  // Historial de modificaciones 
+  // ---------------------------
+  // 1.2, 2020/12/24, VTL: 2a revision general
+  // 1.1, 2020/12/02, VTL: 1a revision
+  // 0.0, 2018/10/14, VTL: creacion
+
+  // Se establece el titulo de la aplicacion 
+  title("PICK & PLACE")
+  
+  // Se establece la pagina de usuario en la pantalla
+  userPage()
+
+  // Bucle principal de la tarea
+  while !bFin
+    // Se borra la pantalla
+    cls()
+    
+    // Se muestra informacion en la pantalla
+    gotoxy(2, 3)
+    put("Total   = " + toString("4", nPV))
+    gotoxy(2, 4)
+    put("Actual  = " + toString("4", nCV))
+    gotoxy(7, 7)
+    put(sMensaje)
+    
+    // Se muestran las etiquetas de las teclas de funcion
+    gotoxy(0, 13)
+    put("Tra.")
+    gotoxy(10, 13)
+    put("Tot.")
+    gotoxy(35, 13)
+    put("Sal.")
+    
+    // Se procesa la tecla pulsada
+    nTecla = getKey()
+    switch nTecla
+      // Enter - Orden de continuar
+      case 270
+        bContinua = true
+      break
+      // F1 - Orden de trasladar piezas
+      case 271
+        bTraslada = true
+      break
+      // F3 - Orden de editar el numero de piezas a trasladar
+      case 273
+        gotoxy(15, 3)
+        get(nPV)
+      break
+      // F8 - Orden de salir de la aplicacion 
+      case 278
+        bSalir = true
+      break
+    endSwitch
+    
+    // Se da paso a la siguiente tarea y estabiliza la pantalla
+    delay(0.1)
+  endWhile
+  bFin = false
+  
+  // Se muestra un mensaje de despedida 
+  cls()
+  gotoxy(12, 7)
+  put("That's all folks")
+end]]></Code>
+  </Program>
+</Programs>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="robotMotion">
+    <Locals>
+      <Local name="pAprox" type="pointRx" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // Controla los movimientos del brazo
+  //
+  // copyright (c) 2018-2020 victortorreslopez
+  //
+  // GNU General Public License
+  //
+  // Variables locales
+  // - pAprox: punto de aproximacion
+  //
+  // Historial de modificaciones 
+  // ---------------------------
+  // 1.2, 2020/12/24, VTL: 2a revision general
+  // 1.1, 2020/12/02, VTL: 1a revision
+  // 0.0, 2018/10/14, VTL: creacion
+
+  // Se desplaza a la posicion de reposo
+  pReposo = appro(pOrigen, trAprox)
+  movej(pReposo, tPinza, mNomSpeed)
+
+  // Se abre la pinza
+  waitEndMove()
+  tPinza.gripper = true
+  delay(tPinza.otime)
+
+  // Bucle principal de la tarea
+  while !bSalir
+    if bTraslada
+      for nCV = 0 to nPV-1
+        // Se espera la orden de continuar
+        sMensaje = "pulse 'enter' para continuar"
+        wait(bContinua)
+        bContinua = false
+        sMensaje = ""
+        
+        // Se coge una pieza
+        // Se aproxima a la posicion origen
+        pAprox = appro(pOrigen, trAprox)
+        movej(pAprox, tPinza, mNomSpeed)
+        movel(pOrigen, tPinza, mVelAprox)
+        // Se cierra la pinza
+        waitEndMove()
+        tPinza.gripper = false
+        delay(tPinza.ctime)
+        // Se aleja de la posicion origen
+        movel(pAprox, tPinza, mVelAprox)
+        
+        // Se coloca una pieza 
+        // Se aproxima a la posicion destino
+        pAprox = appro(pDestino, trAprox)
+        movej(pAprox, tPinza, mNomSpeed)
+        movel(pDestino, tPinza, mVelAprox)
+        waitEndMove()
+        // Se abre la pinza
+        tPinza.gripper = true
+        delay(tPinza.otime)
+        // Se aleja de la posicion destino
+        movel(pAprox, tPinza, mVelAprox)
+        
+        // Se regresa a la posicion de reposo
+        movej(pReposo, tPinza, mNomSpeed)
+      endFor
+      waitEndMove()
+      bTraslada = false
+    endIf
+    
+    // Se da paso a la siguiente tarea
+    delay(0)
+  endWhile
+  bSalir = false
+  
+  // Se regresa a la posicion de referencia
+  movej(jHome,tPinza,mNomSpeed)
+  
+  // Se cierra la pinza
+  waitEndMove()
+  tPinza.gripper = false
+  delay(tPinza.ctime)
+  
+  // Se informa de la finalizacion de la tarea
+  bFin = true
+end]]></Code>
+  </Program>
+</Programs>

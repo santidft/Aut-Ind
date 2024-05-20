@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_INFO">
+    <Code><![CDATA[begin
+  // TRASLADAR (Nivel 1)
+  //
+  // Traslada un determinado numero de piezas de una posicion a otra.
+  //
+  // Version 0.0
+  // copyright (c) 2022 victortorreslopez
+  // GNU General Public License
+  //
+  // HISTORIAL DE VERSIONES
+  // ----------------------
+  // 0.0, 13/12/2022, VTL: Creacion (desde PickPlace, 2018)
+  //
+  // FUNCIONALIDAD
+  // -------------
+  // - F1: Traslada una cierta cantidad de piezas de una posicion a otra.
+  // - F3: Edita el numero total de piezas a trasladar.
+  // - F8: Sale de la aplicacion.
+  // 
+  // SITUACION INICIAL
+  // -----------------
+  // - Brazo en su posicion de referencia.
+  // - Una pieza en la posicion de entrada.
+  // - Ninguna pieza en la posicion de salida.
+  //
+  // RECURSOS
+  // --------
+  // - Datos: BOOL, JOINT, MDESC, POINT, STRING, TOOL, TRSF.
+  // - Instrucciones: title, userPage, while, cls, gotoxy, put, getKey, switch,
+  //   appro, movej, waitEndMove, if, wait, movel, close, open, delay, 
+  //   taskCreate.
+  //
+  // NOTAS
+  // -----
+  // - Resuelto de la manera mas sencilla posible. Con el conjunto de 
+  //   instrucciones mas reducido y mas simple posible.
+  // - El area de trabajo es una plataforma elevada a 100 mm del suelo.
+  //   
+  // REFERENCIAS
+  // -----------
+  //   
+  // CELDA
+  // -----
+  // - Version: s7.10
+  // - Tipo de robot: TX60
+  // - Montaje: suelo
+  // - Modo usrIn0: directo.
+  // 
+  // DATOS
+  // -----
+  // - Plataforma = 400x300x3 mm
+  // - Altura de la plataforma = 100 mm
+  // - Pieza = 69x22x11 mm
+  // - Herramienta (eyector) = 40.0x33.3x22.0 mm
+end]]></Code>
+  </Program>
+</Programs>

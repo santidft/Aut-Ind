@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_INFO">
+    <Code><![CDATA[begin
+  // APLILAR (Nivel 2)
+  //
+  // Traslada indefinidamente una pila de un determinado numero de piezas de 
+  // una posicion a otra.
+  //
+  // Version 0.0
+  // copyright (c) 2022 victortorreslopez
+  // GNU General Public License
+  //
+  // HISTORIAL DE VERSIONES
+  // ----------------------
+  // 0.0, 13/12/2022, VTL: creacion (desde PickPlace, 2018)
+  //
+  // FUNCIONALIDAD
+  // -------------
+  // - F1: Activa/Desactiva el modo "Trasladar".
+  // - F3: Edita el numero total de piezas en la pila a trasladar.
+  // - F4: Ajusta el tiempo de espera entre traslados.
+  // - F6: Reinicia el contador total de piezas trasladadas.
+  // - F8: Sale de la aplicacion.
+  // 
+  // SITUACION INICIAL
+  // -----------------
+  // - Brazo en su posicion de referencia.
+  // - Pila con el numero determinado de bloques en la posicion de entrada.
+  // - Ninguna pieza en la posicion de salida.
+  // - Antes de ejecutar por primera vez la aplicacion deben ajustarse al valor 
+  //   deseado las variables: nEspera, nPiezaAltura y nSeparacion.
+  //
+  // RECURSOS
+  // --------
+  // - Datos: BOOL, FRAME, JOINT, MDESC, POINT, STRING, TOOL, TRSF.
+  // - Instrucciones: appro, title, userPage, while, cls, call, toString, if, 
+  //   getKey, switch, delay, movej, waitEndMove, for, taskCreate.
+  // - Funciones:  getNum, lower, putButton, putEx, putEx2, robotGet, robotPut
+  //
+  // NOTAS
+  // -----
+  // - El area de trabajo es una plataforma elevada a 100 mm del suelo.
+  // - Pilas de entrada y salida simetricas con respecto al centro del espacio 
+  //   de trabajo a una distancia "nSeparacion".
+  // - En el modo trasladar las piezas se trasladan indefinidamente de la pila
+  //   de entrada a la de salida y viceversa.
+  // - El espacio de trabajo (fTrabajo) se determina a partir de una posicion 
+  //   que determina su centro de coordenadas (pCentro)
+  //
+  // REFERENCIAS
+  // -----------
+  //   
+  // CELDA
+  // -----
+  // - Version: s7.10
+  // - Tipo de robot: TX60
+  // - Montaje: suelo
+  // - Modo usrIn0: directo.
+  // 
+  // DATOS
+  // -----
+  // - Plataforma = 400x300x3 mm
+  // - Altura de la plataforma = 100 mm
+  // - Pieza = 69x23x12 mm
+  // - Herramienta (eyector) = 40.0x33.3x22.0 mm
+end]]></Code>
+  </Program>
+</Programs>

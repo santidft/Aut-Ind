@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
+  <Program name="start" access="private" >
+    <Code><![CDATA[begin
+  // Se pone en marcha la aplicacion
+
+  // Se inicializar la aplicacion
+  call inicializar()
+  call ajustar()
+
+  // Se crean las tareas de la aplicacion
+  taskCreate "mcp",100,mcp()
+  taskCreate "robot",100,robot()
+end]]></Code>
+  </Program>
+</Programs>

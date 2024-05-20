@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_GLOBAL">
+    <Code><![CDATA[begin
+  // BOOL
+  // - bFin: indicador de finalizacion de la tarea "robot".
+  // - bPiezaPreparada: pieza preparada para ser trasladada.
+  // - bTermina: orden de terminar la ejecucion de la aplicacion.
+  // - bTraslada: orden de trasladar piezas.
+  //
+  // JOINT
+  // - jHome: brazo en la posicion de referencia.
+  //
+  // MDESC
+  // - mNomSpeed: descriptor de movimiento a velocidad nominal.
+  // - mVelAprox: descriptor de movimiento a velocidad de aproximacion.
+  //
+  // NUM
+  // - nPendientes: numero de piezas pendientes de trasladar.
+  // - nSolicitadas: numero total de piezas a trasladar.
+  //
+  // POINT
+  // - pEntrada: posicion de entrada (cogida) de las piezas.
+  // - pEspera: posicion de reposo (esperando pieza preparada).
+  // - pSalida: posicion de salida (suelta/colocacion) de las piezas.
+  //
+  // STRING
+  // - sMensaje: mensaje para mostrar en la pantalla.
+  //
+  // TOOL
+  // - tEyector: parametros de la herramienta (eyector de vacio con ventosas).
+  //
+  // TRSF  
+  // - trAprox: transformacion de aproximacion a las posiciones origen/destino.
+end]]></Code>
+  </Program>
+</Programs>

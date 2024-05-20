@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="putButton" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="nValue" type="num" xsi:type="element" />
+      <Parameter name="sText" type="string" xsi:type="element" />
+    </Parameters>
+    <Code><![CDATA[begin
+  // Puts a text label above a function key
+  //
+  // Labels greater than 4 characters will shorten to 4
+  //
+  // copyright (c) 2015-2021 victortorreslopez
+  //
+  // GNU General Public License
+  //
+  // Parameters
+  // - nValue: number of function key (1..8)
+  // - sText: function key label
+  //
+  // References
+  // - "2005-27 Example Application". Staubli. 2005
+  //
+  // Version history
+  // ---------------
+  // 0.1, 2021/12/21, VTL: centers the label
+  // 0.0, 2015/01/14, VTL: alfa release
+  
+  if (nValue >= 1) and (nValue <= 8)
+    if (len(sText) > 4)
+      sText = left(sText, 3) + "."
+    endIf
+    gotoxy(((nValue - 1) * 5) + round((5 - len(sText)) / 2), 13)
+    put(sText)
+  endIf
+end
+
+      ]]></Code>
+  </Program>
+</Programs>

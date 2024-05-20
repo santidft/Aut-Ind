@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="getNum" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="nX" type="num" xsi:type="element" />
+      <Parameter name="nY" type="num" xsi:type="element" />
+      <Parameter name="sFormat" type="string" xsi:type="element" />
+      <Parameter name="nValue" type="num" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="i" type="num" xsi:type="array" size="1" />
+      <Local name="n" type="num" xsi:type="array" size="1" />
+      <Local name="s" type="string" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // Acquires a number
+  //
+  // copyright (c) 2013-2021 victortorreslopez
+  //
+  // GNU General Public License
+  //
+  // Parameters
+  // - nX: cursor column (0 to 39)
+  // - nY: cursor row (0 to 13)
+  // - sFormat: display format
+  // - &nValue: numerical variable to be set
+  //
+  // Local variables
+  // - i: iterator index
+  // - n: number of characters in nValue
+  // - s: a string
+  //
+  // Version history
+  // ---------------
+  // 0.1, 2021/12/30, VTL: 1s update (coding style)
+  // 0.0, 2013/12/10, VTL: alfa release
+
+  // Fills s with spaces
+  s = ""
+  n = len(toString(sFormat, nValue))
+  for i = 0 to n - 1
+    s = s + " "
+  endFor
+
+  // Displays spaces before acquires the new string value
+  gotoxy(nX, nY)
+  put(s)
+  
+  // Acquires the new numerical value
+  gotoxy(nX, nY)
+  get(nValue)
+end
+]]></Code>
+  </Program>
+</Programs>

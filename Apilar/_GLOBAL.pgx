@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="_GLOBAL">
+    <Code><![CDATA[begin
+  // BOOL
+  // - bFin: indicador de finalizacion
+  // - bHaciaSalida: indica la direccion del traslado de piezas
+  // - bPiezaPreparada: pieza preparada para ser cogida
+  // - bTermina: orden de abandonar la ejecucion de la aplicacion
+  // - bTraslada: orden de trasladar la pila de piezas
+  //
+  // FRAME
+  // frTrabajo: sistema de coordenadas del area de trabajo
+  //
+  // JOINT
+  // - jHome: brazo en la posicion de referencia
+  //
+  // MDESC
+  // - mNomSpeed: descriptor de movimiento a velocidad nominal
+  // - mVelAprox: descriptor de movimiento a velocidad de aproximacion
+  //
+  // NUM
+  // - nEspera: tiempo de espera en la posicion de espera antes de volver a 
+  //   trasladar la pila de piezas
+  // - nOffset: desplazamiento de la posicion de reposo con respecto a la 
+  //   altura de la pila de piezas. 
+  // - nPiezaActual: posicion de la proxima pieza a trasladar en la pila origen
+  // - nPiezaAltura: altura de la pieza a trasladar
+  // - nSeparacion: distancia entre las pilas de bloques
+  // - nTotalPiezas: numero total de piezas en la pila
+  // - nTrasladadas: numero total acumulado de piezas trasladadas
+  //
+  // POINT
+  // - p0: punto situado en el centro de coordenadas del espacio de trabajo
+  // - pCentro: posicion central de referencia del espacio de trabajo
+  // - pDestino: posicion de la proxima pieza a colocar
+  // - pEntrada: posicion de la pila de entrada
+  // - pEspera: posicion de reposo 
+  // - pInicio: posicion inicial que señala la posicion de la pila de entrada
+  // - pOrigen: posicion de la proxima pieza a coger
+  // - pSalida: posicion de la pila de salida
+  //
+  // TOOL
+  // - tEyector: parametros de la herramienta (eyector de vacio con ventosas)
+  //
+  // TRSF  
+  // - trAprox: transformacion de aproximacion a las posiciones origen/destino
+end]]></Code>
+  </Program>
+</Programs>

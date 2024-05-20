@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="ajustar">
+    <Code><![CDATA[begin
+  // Calcula la posiciones de referencia
+
+  // Posicion de entrada y salida 
+  // - Simetricas con respecto al origen (nSeparacion)
+  // - A la altura de la primera pieza
+  pEntrada=appro(p0,{0,-nSeparacion/2,-nPiezaAltura,0,0,0})
+  pSalida=appro(p0,{0,nSeparacion/2,-nPiezaAltura,0,0,0})
+
+  // Posicion de espera en el centro por encima (offset) de la altura de la pila
+  pEspera=appro(p0,{0,0,-((nTotalPiezas*nPiezaAltura)+nOffset),0,0,0})
+
+  // Posicion de espera inicial por encima (offset) de la pila de entrada
+  pInicio=appro(pEntrada,{0,0, -((nTotalPiezas*nPiezaAltura)+nOffset),0,0,0})
+  end]]></Code>
+  </Program>
+</Programs>

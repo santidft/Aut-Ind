@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="robotPut" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="pPosition" type="point" xsi:type="element" />
+      <Parameter name="trTrans" type="trsf" xsi:type="element" />
+      <Parameter name="tTool" type="tool" xsi:type="element" />
+      <Parameter name="mApproach" type="mdesc" xsi:type="element" />
+      <Parameter name="mTarget" type="mdesc" xsi:type="element" />
+    </Parameters>
+    <Locals>
+      <Local name="pAppro" type="point" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // Places a part
+  //
+  // copyright (c) 2015 victortorreslopez
+  //
+  // GNU General Public License
+  //
+  // Parmeters
+  // - pPosition: target position
+  // - trTrans: approach transform to target position
+  // - tTool: tool
+  // - mApproach: movement descriptor to "approach" point
+  // - mTarget: movement descriptor to "target" position
+  //
+  // Local variables
+  // - pAppro: approach point to target position
+  //
+  // References
+  // - "2005-27 Example Application". Staubli. 2005
+  //
+  // Version history
+  // ---------------
+  // 2.0, 2020/02/15, VTL: renames all parameters
+  // 1.1, 2018/09/27, VTL: add "ma"
+  // 1.0, 2018/09/27, VTL: rename "m" by "mt"
+  // 0.0, 2015/01/14, VTL: alfa release
+  //
+  pAppro = appro(pPosition, trTrans)
+  movej(pAppro, tTool, mApproach)
+  movel(pPosition, tTool, mTarget)
+  open(tTool)
+  movel(pAppro, tTool, mTarget)
+end
+
+      ]]></Code>
+  </Program>
+</Programs>
