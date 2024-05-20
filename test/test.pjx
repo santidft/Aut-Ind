@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s7.10" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="inicializar.pgx" />
+    <Program file="mcp.pgx" />
+    <Program file="Pick.pgx" />
+    <Program file="Piramide.pgx" />
+    <Program file="place.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="test.dtx" />
+  </Database>
+  <Libraries />
+</Project>
